@@ -1,3 +1,5 @@
+'use client'
+
 function Card({ children }) {
   return (
     <div className="border rounded-md border-gray-600 p-4">
@@ -8,6 +10,10 @@ function Card({ children }) {
 
 export default function Home() {
   const name = 'Piotr'
+  const handleClick = (e) => {
+    console.log(e)
+    alert('Hello!')
+  }
   return (
     <>
       <div className="p-20 space-y-4">
@@ -20,6 +26,8 @@ export default function Home() {
         <Card />
         <Card />
         <Card />
+
+        <button onClick={handleClick}>Click me!</button>
       </div>
     </>
   )
