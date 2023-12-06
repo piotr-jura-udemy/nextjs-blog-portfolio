@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from "react"
+
 function Card({ children }) {
   return (
     <div className="border rounded-md border-gray-600 p-4">
@@ -9,10 +11,10 @@ function Card({ children }) {
 }
 
 export default function Home() {
+  const [label, setLabel] = useState('Show')
   const name = 'Piotr'
-  const handleClick = (e) => {
-    console.log(e)
-    alert('Hello!')
+  const handleClick = () => {
+    setLabel(label == 'Show' ? 'Hide' : 'Show')
   }
   return (
     <>
@@ -27,7 +29,7 @@ export default function Home() {
         <Card />
         <Card />
 
-        <button onClick={handleClick}>Click me!</button>
+        <button onClick={handleClick}>{label}</button>
       </div>
     </>
   )
