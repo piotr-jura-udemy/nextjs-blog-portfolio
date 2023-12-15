@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "json-server": "json-server --watch db.json --port 3001"
+    "json-server": "json-server --delay=5000 --watch db.json --port 3001"
   },
   "dependencies": {
     "next": "14.0.3",
