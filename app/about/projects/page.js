@@ -8,11 +8,11 @@ export default async function ProjectsPage() {
     <div>
       <h1 className="mb-8 text-xl">Projects</h1>
       <div className="mb-8">Hello, this is the list of my repos!</div>
-      {/* <ErrorBoundary fallback={<div>Cannnot fetch projects currently</div>}> */}
-      <Suspense fallback={<ProjectListLoading />}>
-        <ProjectList />
-      </Suspense>
-      {/* </ErrorBoundary> */}
+      <ErrorBoundary fallback={<div>Cannnot fetch projects currently</div>}>
+        <Suspense fallback={<ProjectListLoading />}>
+          <ProjectList />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   )
 }
