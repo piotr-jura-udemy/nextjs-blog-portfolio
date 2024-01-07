@@ -1,6 +1,7 @@
 import { Inter, Roboto } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/header'
+import Chatbot from '@/components/chatbot'
 
 const inter = Inter({ subsets: ['latin'] })
 const roboto = Roboto({
@@ -21,6 +22,8 @@ export default function RootLayout({ children }) {
         <main className="mt-12">
           {children}
         </main>
+
+        <Chatbot />
       </body>
     </html>
   )
