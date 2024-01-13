@@ -1,37 +1,25 @@
 import { notFound } from 'next/navigation'
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import { loadPost } from '@/lib/posts'
-
-const titles = {
-  'first': 'Hello First!',
-  'second': 'Hello Second!'
-}
+import { getPost } from '@/lib/posts'
 
 export async function generateMetadata({ params }, parent) {
-  const description = (await parent).description ?? 'Default desc'
-
-  return {
-    title: titles[params.slug],
-    description
-  }
+  try {
+    const { frontmatter } = await getPost(params.slug)
+    return frontmatter
+  } catch (e) { }
 }
 
-export default function BlogPage({ params }) {
-  // if (!['first', 'second'].includes(params.slug)) {
-  //   notFound()
-  // }
-
-  let markdown
+export default async function BlogPage({ params }) {
+  let post
 
   try {
-    markdown = loadPost(params.slug)
+    post = await getPost(params.slug)
   } catch (e) {
     notFound()
   }
 
   return (
     <article className="prose dark:prose-invert">
-      <MDXRemote source={markdown} />
+      {post.content}
     </article>
   )
 }
