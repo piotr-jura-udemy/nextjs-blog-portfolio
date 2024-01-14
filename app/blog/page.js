@@ -1,8 +1,15 @@
 import { getPosts } from '@/lib/posts'
 import Link from 'next/link'
 
-export default async function BlogPostsPage() {
-  const posts = await getPosts()
+export default async function BlogPostsPage(
+  { searchParams }
+) {
+  console.log(searchParams.tags)
+  const tags = searchParams.tags?.split(',')
+  console.log(tags)
+  const posts = await getPosts({
+    tags
+  })
   return (
     <>
       <h1 className="mb-8 text-xl">Recent Posts</h1>
