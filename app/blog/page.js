@@ -4,12 +4,13 @@ import Link from 'next/link'
 export default async function BlogPostsPage(
   { searchParams }
 ) {
-  console.log(searchParams.tags)
   const tags = searchParams.tags?.split(',')
-  console.log(tags)
+  const order = searchParams.order ?? 'newest'
   const posts = await getPosts({
-    tags
+    tags,
+    newest: order === 'newest'
   })
+
   return (
     <>
       <h1 className="mb-8 text-xl">Recent Posts</h1>
@@ -17,6 +18,12 @@ export default async function BlogPostsPage(
       <div className="text-lg text-gray-600 dark:text-gray-400 mb-8">Stay up to date with most recent posts</div>
 
       <hr />
+
+      <div className="mb-8">
+        Display&nbsp;
+        {order === 'newest' && <Link href="/blog?order=oldest" className="underline">oldest</Link>}
+        {order === 'oldest' && <Link href="/blog?order=newest" className="underline">newest</Link>}
+      </div>
 
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {posts.map(post => (
