@@ -6,9 +6,13 @@ export default async function BlogPostsPage(
 ) {
   const tags = searchParams.tags?.split(',')
   const order = searchParams.order ?? 'newest'
+  const page = searchParams.page ?? 1
+  const limit = searchParams.limit ?? 3
   const posts = await getPosts({
     tags,
-    newest: order === 'newest'
+    newest: order === 'newest',
+    page,
+    limit
   })
 
   return (
