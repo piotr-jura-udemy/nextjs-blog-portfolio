@@ -1,3 +1,4 @@
+import DarkMode from "./dark-mode"
 import Navigation from "./navigation"
 import Link from "next/link"
 
@@ -11,7 +12,7 @@ export default function Header() {
         <Navigation />
       </div>
       <div>
-        Dark Toggle
+        <DarkMode />
       </div>
     </header>
   )
