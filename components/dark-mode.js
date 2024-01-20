@@ -1,14 +1,14 @@
 'use client'
 
-import useDarkMode from "@/hooks/use-dark-mode"
+import useDarkMode from '@/hooks/use-dark-mode'
 
 const nextModeIcons = {
   'light': '🌚',
   'dark': '🌝'
 }
 
-export default function DarkMode() {
-  const { theme, toggleTheme } = useDarkMode()
+export default function DarkMode({ defaultTheme }) {
+  const { theme, toggleTheme } = useDarkMode(defaultTheme)
   return (
     <button onClick={toggleTheme}>{nextModeIcons[theme]}</button>
   )
